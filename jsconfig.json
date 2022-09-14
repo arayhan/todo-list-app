@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
       "@components/*": ["components/*"],
-			"@images/*": ["images/*.{jpg, png, svg, gif, webp, jpeg, ico}"],
+			"@images/*": ["images/*"],
 			"@pages/*": ["pages/*"],
 			"@services/*": ["services/*"],
-			"@styles/*": ["styles/*.{css, scss, sass}"],
-			"@tests/*": ["tests/*"],
+			"@styles/*": ["styles/*"],
 			"@utils/*": ["utils/*"]
     }
   },
