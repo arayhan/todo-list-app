@@ -3,12 +3,7 @@
     "jsx": "preserve",
     "baseUrl": "src",
     "paths": {
-      "@components/*": ["components/*"],
-			"@images/*": ["images/*"],
-			"@pages/*": ["pages/*"],
-			"@services/*": ["services/*"],
-			"@styles/*": ["styles/*"],
-			"@utils/*": ["utils/*"]
+      "@/*": ["./*"],
     }
   },
   "include": ["src/**/*"],
