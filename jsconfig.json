@@ -3,15 +3,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@config/*": ["src/config/*"],
-      "@images/*": ["src/images/*"],
-      "@pages/*": ["src/pages/*"],
-      "@services/*": ["src/services/*"],
-      "@store/*": ["src/store/*"],
-      "@styles/*": ["src/styles/*"],
-      "@tests/*": ["src/tests/*"],
-      "@utils/*": ["src/utils/*"]
+      "@components/*": ["components/*"],
+			"@images/*": ["images/*.{jpg, png, svg, gif, webp, jpeg, ico}"],
+			"@pages/*": ["pages/*"],
+			"@services/*": ["services/*"],
+			"@styles/*": ["styles/*.{css, scss, sass}"],
+			"@tests/*": ["tests/*"],
+			"@utils/*": ["utils/*"]
     }
   },
   "include": ["src/**/*"],
