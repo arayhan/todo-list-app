@@ -1,0 +1,45 @@
+.container {
+	@apply h-screen;
+	@apply flex flex-col items-center justify-center;
+	@apply bg-slate-800;
+
+	.content {
+		@apply flex flex-col items-center justify-center;
+		@apply space-y-8;
+
+		.header {
+			@apply space-y-3;
+
+			.title { @apply font-bold text-5xl text-center text-white; }
+			.author { @apply text-center text-xl text-white; }
+			.author span {
+				@apply bg-gradient-to-l from-blue-500 to-green-300 bg-clip-text font-semibold;
+				-webkit-text-fill-color: transparent;
+			}
+		}
+
+		.stack {
+			@apply flex items-center justify-center;
+			@apply space-x-5;
+
+			.iconReact { @apply w-20 }
+			.iconTailwind { @apply w-16 }
+		}
+
+		.cta button {
+				@apply inline-block px-8 py-3 rounded-sm;
+				@apply text-slate-800 bg-gray-300 font-semibold;
+				@apply hover:bg-gray-200;
+				@apply transition-all;
+		}
+	}
+
+	.footer {
+		@apply fixed bottom-0 left-0;
+		@apply flex items-center justify-center w-full py-5;
+		@apply bg-slate-900 bg-opacity-30;
+
+		.copyright { @apply text-center text-slate-500 font-semibold; }
+	}
+}
+
