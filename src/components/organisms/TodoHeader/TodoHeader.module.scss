@@ -1,0 +1,18 @@
+.container {
+	@apply p-10 space-y-1;
+	@apply text-center;
+
+	.title {
+		@apply text-4xl font-semibold;
+		@apply text-gray-700;
+	}
+
+	.subtitle {
+		@apply text-lg;
+
+		span {
+			@apply bg-gradient-to-br bg-clip-text from-blue-700 to-green-800;
+			-webkit-text-fill-color: transparent;
+		}
+	}
+}

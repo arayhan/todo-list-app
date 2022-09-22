@@ -1,7 +1,6 @@
 .container {
-	@apply h-screen;
-	@apply flex flex-col items-center justify-center;
-	@apply bg-slate-800;
+	@apply min-h-screen;
+	background: #ccc;
 
 	.content {
 		@apply flex flex-col items-center justify-center;
