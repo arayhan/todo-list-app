@@ -1,17 +1,39 @@
-import React from 'react';
-import { FiMenu, FiPlusCircle } from 'react-icons/fi';
-import { Button } from '@/components/atoms';
+import React, { useState } from 'react';
+import { FiPlusCircle } from 'react-icons/fi';
+import { Button, InputRadio } from '@/components/atoms';
 import styles from './TodoPanel.module.scss';
 
+const FILTERS = {
+	TASK: { value: 'task', label: 'Task' },
+	DONE: { value: 'done', label: 'Done' },
+	ALL: { value: 'all', label: 'All' },
+};
+const FILTERS_ARRAY = Object.values(FILTERS);
+
 export const TodoPanel = () => {
+	const [selectedFilter, setSelectedFilter] = useState(FILTERS.ALL);
+
 	const handleAddNewTask = () => {
 		console.log('add new task');
 	};
 
 	return (
 		<div className={styles.container}>
-			<Button rightIcon={<FiPlusCircle size={18} />} label="Add New Task" onClick={handleAddNewTask} />
-			<Button label={<FiMenu size={23} />} />
+			<div className={styles.filter_container}>
+				{FILTERS_ARRAY.map((filter) => (
+					<InputRadio
+						name="filter"
+						checked={selectedFilter.value === filter.value}
+						value={filter.value}
+						label={filter.label}
+						onChange={() => setSelectedFilter(filter)}
+					/>
+				))}
+			</div>
+
+			<div>
+				<Button rightIcon={<FiPlusCircle size={18} />} label="Add New Task" onClick={handleAddNewTask} />
+			</div>
 		</div>
 	);
 };

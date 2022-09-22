@@ -1,4 +1,9 @@
 .container {
-	@apply flex items-center justify-end;
+	@apply flex items-center justify-between;
 	@apply space-x-2;
+
+	.filter_container {
+		@apply flex items-center;
+		@apply space-x-5;
+	}
 }

@@ -7,7 +7,6 @@ export const TodoHeader = ({ containerClassName }) => {
 			<div className={styles.subtitle}>
 				by <span>Ahmed Rayhan Primadedas</span>
 			</div>
-			<div className={styles.separator} />
 		</div>
 	);
 };

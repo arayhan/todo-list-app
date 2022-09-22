@@ -17,4 +17,5 @@ export const Button = ({ className, type, leftIcon, rightIcon, label, children, 
 
 Button.defaultProps = {
 	type: 'button',
+	className: '',
 };
