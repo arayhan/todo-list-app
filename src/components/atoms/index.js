@@ -1,3 +1,2 @@
-import InputSearch from './InputSearch/InputSearch';
-
-export { InputSearch };
+export * from './InputSearch/InputSearch';
+export * from './Button/Button';

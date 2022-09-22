@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Home.module.scss';
-import { TodoHeader, TodoSearch } from '@/components/organisms';
+import { TodoHeader, TodoPanel, TodoSearch } from '@/components/organisms';
 
 const Home = () => {
 	return (
@@ -9,8 +9,12 @@ const Home = () => {
 				<TodoHeader />
 			</div>
 
-			<div className="container">
+			<div className="container mb-7">
 				<TodoSearch />
+			</div>
+
+			<div className="container">
+				<TodoPanel />
 			</div>
 		</div>
 	);

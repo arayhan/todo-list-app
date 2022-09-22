@@ -1,0 +1,8 @@
+.button {
+	@apply flex items-center justify-center;
+	@apply px-4 py-2 space-x-2;
+	@apply rounded-md;
+	@apply bg-blue-700 hover:bg-blue-600;
+	@apply text-white;
+	@apply transition-all;
+}
