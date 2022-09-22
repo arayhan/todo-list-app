@@ -1,11 +1,17 @@
 import React from 'react';
 import styles from './Home.module.scss';
-import { TodoHeader } from '@/components/organisms';
+import { TodoHeader, TodoSearch } from '@/components/organisms';
 
 const Home = () => {
 	return (
-		<div className={styles.container}>
-			<TodoHeader />
+		<div className={styles.root}>
+			<div className="container mb-7">
+				<TodoHeader />
+			</div>
+
+			<div className="container">
+				<TodoSearch />
+			</div>
 		</div>
 	);
 };

@@ -1,18 +1,24 @@
 .container {
-	@apply p-10 space-y-1;
 	@apply text-center;
 
 	.title {
 		@apply text-4xl font-semibold;
-		@apply text-gray-700;
+		@apply text-gray-800;
+		@apply mb-1;
 	}
 
 	.subtitle {
 		@apply text-lg;
+		@apply mb-4;
 
 		span {
 			@apply bg-gradient-to-br bg-clip-text from-blue-700 to-green-800;
 			-webkit-text-fill-color: transparent;
 		}
+	}
+
+	.separator {
+		@apply mx-auto;
+		@apply w-40 border border-gray-800;
 	}
 }

@@ -1,6 +1,6 @@
-.container {
-	@apply min-h-screen;
-	background: #ccc;
+.root {
+	@apply min-h-screen pt-10;
+	background: #ddd;
 
 	.content {
 		@apply flex flex-col items-center justify-center;
