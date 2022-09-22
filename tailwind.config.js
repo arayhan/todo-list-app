@@ -7,6 +7,10 @@ module.exports = {
 				center: true,
 				padding: '1rem',
 			},
+			fontFamily: {
+				inter: ['"Inter"', 'sans-serif'],
+				rubik: ['"Rubik"', 'sans-serif'],
+			},
 		},
 	},
 	plugins: [],
