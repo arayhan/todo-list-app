@@ -1,0 +1,1 @@
+export * from './ModalFormInputTask/ModalFormInputTask';

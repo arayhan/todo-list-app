@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import { Button, InputRadio } from '@/components/atoms';
+import { ModalFormInputTask } from '@/components/molecules';
 
 const FILTERS = {
 	TASK: { value: 'task', label: 'Task' },
@@ -17,7 +18,7 @@ export const TodoPanelHeader = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-between space-x-2">
+		<div className="flex items-center justify-between">
 			<div className="flex items-center space-x-3">
 				{FILTERS_ARRAY.map((filter) => (
 					<InputRadio
@@ -40,6 +41,8 @@ export const TodoPanelHeader = () => {
 					onClick={handleAddNewTask}
 				/>
 			</div>
+
+			<ModalFormInputTask />
 		</div>
 	);
 };
