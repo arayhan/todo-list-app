@@ -10,3 +10,7 @@ export const TodoHeader = ({ containerClassName }) => {
 		</div>
 	);
 };
+
+TodoHeader.defaultProps = {
+	containerClassName: '',
+};
