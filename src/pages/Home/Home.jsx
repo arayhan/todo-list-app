@@ -1,5 +1,5 @@
 import React from 'react';
-import { TodoHeader, TodoPanel, TodoSearch } from '@/components/organisms';
+import { TodoHeader, TodoList, TodoPanel, TodoSearch } from '@/components/organisms';
 
 const Home = () => {
 	return (
@@ -8,9 +8,9 @@ const Home = () => {
 				<TodoHeader containerClassName="py-14" />
 				<TodoSearch containerClassName="mb-8" />
 
-				<div className="bg-white p-5 rounded-md shadow-md">
+				<div className="bg-white p-5 rounded-md shadow-md space-y-5">
 					<TodoPanel />
-					<hr className="my-5" />
+					<TodoList />
 				</div>
 			</div>
 		</div>

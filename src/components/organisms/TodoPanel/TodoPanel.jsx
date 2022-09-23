@@ -33,7 +33,13 @@ export const TodoPanel = () => {
 			</div>
 
 			<div>
-				<Button rightIcon={<FiPlusCircle size={18} />} label="Add New Task" onClick={handleAddNewTask} />
+				<Button
+					className="px-5 py-2 space-x-2"
+					rightIcon={<FiPlusCircle size={18} />}
+					variant="primary"
+					label="Add New Task"
+					onClick={handleAddNewTask}
+				/>
 			</div>
 		</div>
 	);
