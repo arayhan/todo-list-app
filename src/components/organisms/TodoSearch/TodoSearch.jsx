@@ -1,16 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { useAtom } from 'jotai';
-import { useAtomDevtools } from 'jotai/devtools';
+import { useEffect, useRef, useState } from 'react';
 import useKeypress from 'react-use-keypress';
 import { FiSearch } from 'react-icons/fi';
-import { atoms } from '@/store/store';
 
 export const TodoSearch = ({ containerClassName }) => {
 	const searchRef = useRef(null);
 
-	const [search, setSearch] = useAtom(atoms.search);
-
-	useAtomDevtools(atoms.search, { name: 'search' });
+	const [search, setSearch] = useState('');
 
 	const handleChange = (event) => setSearch(event.target.value);
 
