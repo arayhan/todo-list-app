@@ -9,7 +9,7 @@ const FILTERS = {
 };
 const FILTERS_ARRAY = Object.values(FILTERS);
 
-export const TodoPanel = () => {
+export const TodoPanelHeader = () => {
 	const [selectedFilter, setSelectedFilter] = useState(FILTERS.ALL);
 
 	const handleAddNewTask = () => {
@@ -31,7 +31,7 @@ export const TodoPanel = () => {
 				))}
 			</div>
 
-			<div>
+			<div className="flex items-center space-x-3">
 				<Button
 					className="px-5 py-2 space-x-2"
 					rightIcon={<FiPlusCircle size={18} />}

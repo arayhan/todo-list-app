@@ -1,4 +1,4 @@
-export const TodoHeader = ({ containerClassName }) => {
+export const AppHeader = ({ containerClassName }) => {
 	return (
 		<div className={`text-center ${containerClassName}`}>
 			<div className="text-4xl font-semibold text-gray-800 mb-1">Todo List App</div>
@@ -15,6 +15,6 @@ export const TodoHeader = ({ containerClassName }) => {
 	);
 };
 
-TodoHeader.defaultProps = {
+AppHeader.defaultProps = {
 	containerClassName: '',
 };
