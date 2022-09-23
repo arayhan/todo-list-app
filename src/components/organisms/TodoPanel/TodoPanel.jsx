@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import { Button, InputRadio } from '@/components/atoms';
-import styles from './TodoPanel.module.scss';
 
 const FILTERS = {
 	TASK: { value: 'task', label: 'Task' },
@@ -18,8 +17,8 @@ export const TodoPanel = () => {
 	};
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.filter_container}>
+		<div className="flex items-center justify-between space-x-2">
+			<div className="flex items-center space-x-3">
 				{FILTERS_ARRAY.map((filter) => (
 					<InputRadio
 						key={filter.value}

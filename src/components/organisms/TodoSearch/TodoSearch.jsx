@@ -4,7 +4,6 @@ import { useAtomDevtools } from 'jotai/devtools';
 import useKeypress from 'react-use-keypress';
 import { FiSearch } from 'react-icons/fi';
 import { atoms } from '@/store/store';
-import styles from './TodoSearch.module.scss';
 
 export const TodoSearch = ({ containerClassName }) => {
 	const searchRef = useRef(null);
@@ -21,21 +20,21 @@ export const TodoSearch = ({ containerClassName }) => {
 	});
 
 	return (
-		<div className={`${styles.container} ${containerClassName}`}>
-			<div className={styles.icon}>
+		<div className={`flex items-center justify-start bg-white shadow-md py-2 px-3 rounded-md ${containerClassName}`}>
+			<div className="px-2 text-gray-800">
 				<FiSearch size={20} />
 			</div>
 
 			<input
 				ref={searchRef}
-				className={styles.field}
+				className="flex-1 border-0 focus:ring-0"
 				type="search"
 				value={search}
 				onChange={handleChange}
 				placeholder="Search your stuff here..."
 			/>
 
-			<div className={styles.adornment}>Ctrl+K</div>
+			<div className="text-gray-400 border rounded-md border-gray-300 px-2 py-1 text-sm">Ctrl+K</div>
 		</div>
 	);
 };

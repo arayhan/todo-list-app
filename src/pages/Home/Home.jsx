@@ -1,4 +1,3 @@
-import React from 'react';
 import { TodoHeader, TodoList, TodoPanel, TodoSearch } from '@/components/organisms';
 
 const Home = () => {
