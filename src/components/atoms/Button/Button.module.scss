@@ -1,11 +1,12 @@
 .button {
-	@apply flex items-center justify-center;
-	@apply rounded-md;
+	@apply flex items-center;
 	@apply transition-all;
+	@apply overflow-hidden;
 }
 
-.primary { @apply bg-blue-700 hover:bg-blue-600 text-white; }
-.danger { @apply bg-red-700 hover:bg-red-600 text-white; }
-.success { @apply bg-green-700 hover:bg-green-600 text-white; }
-.light { @apply bg-gray-100 hover:bg-gray-50 text-gray-800; }
-.transparent { @apply bg-transparent }
+.primary { @apply bg-blue-700 hover:bg-blue-600 text-white rounded-md; }
+.danger { @apply bg-red-700 hover:bg-red-600 text-white rounded-md; }
+.warning { @apply bg-yellow-700 hover:bg-yellow-600 text-white rounded-md; }
+.success { @apply bg-green-700 hover:bg-green-600 text-white rounded-md; }
+.light { @apply bg-gray-100 hover:bg-gray-50 text-gray-800 rounded-md; }
+.transparent { @apply bg-transparent; }
