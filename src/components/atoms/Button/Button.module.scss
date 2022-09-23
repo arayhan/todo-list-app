@@ -1,8 +1,11 @@
-.button, .button[type='button'] {
+.button {
 	@apply flex items-center justify-center;
-	@apply px-4 py-2 space-x-2;
 	@apply rounded-md;
-	@apply bg-blue-700 hover:bg-blue-600;
-	@apply text-white;
 	@apply transition-all;
 }
+
+.primary { @apply bg-blue-700 hover:bg-blue-600 text-white; }
+.danger { @apply bg-red-700 hover:bg-red-600 text-white; }
+.success { @apply bg-green-700 hover:bg-green-600 text-white; }
+.light { @apply bg-gray-100 hover:bg-gray-50 text-gray-800; }
+.transparent { @apply bg-transparent }

@@ -1,8 +1,8 @@
 import styles from './Button.module.scss';
 
-export const Button = ({ className, type, leftIcon, rightIcon, label, children, ...props }) => {
+export const Button = ({ className, type, variant, leftIcon, rightIcon, label, children, ...props }) => {
 	return (
-		<button type={type} className={`${styles.button} ${className}`} {...props}>
+		<button type={type} className={`${styles.button} ${styles[variant]} ${className}`} {...props}>
 			{leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
 
 			<span className={styles.label}>
@@ -17,5 +17,6 @@ export const Button = ({ className, type, leftIcon, rightIcon, label, children, 
 
 Button.defaultProps = {
 	type: 'button',
+	variant: 'transparent',
 	className: '',
 };
