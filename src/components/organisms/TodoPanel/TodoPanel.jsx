@@ -22,6 +22,7 @@ export const TodoPanel = () => {
 			<div className={styles.filter_container}>
 				{FILTERS_ARRAY.map((filter) => (
 					<InputRadio
+						key={filter.value}
 						name="filter"
 						checked={selectedFilter.value === filter.value}
 						value={filter.value}
