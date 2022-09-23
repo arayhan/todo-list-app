@@ -12,10 +12,7 @@ const FILTERS_ARRAY = Object.values(FILTERS);
 
 export const TodoPanelHeader = () => {
 	const [selectedFilter, setSelectedFilter] = useState(FILTERS.ALL);
-
-	const handleAddNewTask = () => {
-		console.log('add new task');
-	};
+	const [isShowModal, setIsShowModal] = useState(false);
 
 	return (
 		<div className="flex items-center justify-between">
@@ -38,11 +35,11 @@ export const TodoPanelHeader = () => {
 					rightIcon={<FiPlusCircle size={18} />}
 					variant="primary"
 					label="Add New Task"
-					onClick={handleAddNewTask}
+					onClick={() => setIsShowModal(true)}
 				/>
 			</div>
 
-			<ModalFormInputTask />
+			{isShowModal && <ModalFormInputTask onClose={() => setIsShowModal(false)} />}
 		</div>
 	);
 };
