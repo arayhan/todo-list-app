@@ -11,7 +11,7 @@ export const TodoPanelFooter = () => {
 	const handleDeleteBulk = async (method) => {
 		const { isConfirmed } = await Swal.fire({
 			title: 'Are you sure?',
-			text: 'You will not be able to recover this task(s)!',
+			text: 'You will not be able to recover these task(s)!',
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#2663EB',
