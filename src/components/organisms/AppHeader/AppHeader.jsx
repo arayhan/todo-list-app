@@ -22,6 +22,7 @@ export const AppHeader = ({ containerClassName }) => {
 			<div className="flex items-center justify-center space-x-3">
 				{SOCMEDS.map((socmed) => (
 					<a
+						key={socmed.name}
 						className="flex items-center justify-center rounded-md text-xs bg-indigo-700 hover:bg-indigo-600 transition-all text-white space-x-2 px-2 py-1"
 						href={socmed.link}
 						rel="noreferrer"

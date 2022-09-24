@@ -12,7 +12,7 @@ const Home = () => {
 		setInterval(() => {
 			alert.show('Synching...', { type: 'syncing' });
 			getTodos();
-		}, 10000);
+		}, 20000);
 	}, [alert, getTodos]);
 
 	useEffect(() => {
