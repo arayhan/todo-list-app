@@ -1,6 +1,6 @@
 import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
-import { postTodo, getTodos, updateTodo } from '@/services';
+import { postTodo, getTodos, updateTodo, deleteTodo } from '@/services';
 import { FILTERS } from '@/utils/constants';
 
 export const useTodoStore = create(
@@ -48,7 +48,9 @@ export const useTodoStore = create(
 					if (callback) callback(response);
 				},
 				deleteTodo: async (id, callback) => {
-					console.log('deleteTodo', id);
+					const response = await deleteTodo(id);
+					get().getTodos();
+					if (callback) callback(response);
 				},
 
 				filterTodo: () => {
