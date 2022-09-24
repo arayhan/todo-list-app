@@ -2,7 +2,8 @@ import { FORM_METHODS } from '@/utils/constants';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { FiBook } from 'react-icons/fi';
-import { Button } from '../../atoms/Button/Button';
+import { Button } from '@/components/atoms';
+import { useTodoStore } from '@/store';
 
 export const ModalFormInputTask = ({ onClose }) => {
 	const { control, handleSubmit } = useForm();
@@ -26,19 +27,28 @@ export const ModalFormInputTask = ({ onClose }) => {
 					<Controller
 						control={control}
 						name="task"
-						render={({ field: { value, onChange } }) => (
-							<label className="flex items-center border rounded-md px-4 py-3 w-full space-x-4" htmlFor="formInputTask">
-								<div className="text-blue-500">
-									<FiBook size={18} />
-								</div>
-								<input
-									className="outline-0 ring-0 focus:ring-0 w-full"
-									placeholder="Ex : Go to market"
-									id="formInputTask"
-									value={value}
-									onChange={onChange}
-								/>
-							</label>
+						rules={{ required: { value: true, message: 'Harus diisi' } }}
+						render={({ field: { value, onChange }, fieldState: { error } }) => (
+							<div className="flex flex-col space-y-1">
+								<label
+									className={`flex items-center border rounded-md px-4 py-3 w-full space-x-4 ${
+										error ? 'border-2 border-red-500' : ''
+									}`}
+									htmlFor="formInputTask"
+								>
+									<div className="text-blue-500">
+										<FiBook size={18} />
+									</div>
+									<input
+										className="outline-0 ring-0 focus:ring-0 w-full"
+										placeholder="Ex : Go to market"
+										id="formInputTask"
+										value={value}
+										onChange={onChange}
+									/>
+								</label>
+								{error && <div className="text-red-500 text-sm">{error.message}</div>}
+							</div>
 						)}
 					/>
 				</div>
