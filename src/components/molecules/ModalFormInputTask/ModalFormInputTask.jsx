@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { FiBook } from 'react-icons/fi';
-import { Button, Modal } from '@/components/atoms';
+import { Modal } from '@/components/atoms';
 import { useTodoStore } from '@/store';
 
 export const ModalFormInputTask = ({ onClose }) => {
