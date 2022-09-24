@@ -34,16 +34,16 @@ export const TodoPanelFooter = () => {
 	};
 
 	return (
-		<div className="flex justify-center space-x-3">
+		<div className="flex flex-col justify-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
 			<Button
-				className="px-5 py-2 space-x-2"
+				className="w-full px-5 py-2 space-x-2 justify-center text-center"
 				variant="danger"
 				leftIcon={<FiTrash />}
 				label="Delete Done Task(s)"
 				onClick={() => handleDeleteBulk(FORM_METHODS.DELETE_ALL_DONE)}
 			/>
 			<Button
-				className="px-5 py-2 space-x-2"
+				className="w-full px-5 py-2 space-x-2 justify-center"
 				variant="danger"
 				leftIcon={<FiTrash />}
 				label="Delete All Task(s)"

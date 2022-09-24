@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import useKeypress from 'react-use-keypress';
 import { FiSearch } from 'react-icons/fi';
 import { useTodoStore } from '@/store';
@@ -18,12 +18,12 @@ export const TodoSearch = ({ containerClassName }) => {
 	return (
 		<div className={`flex items-center justify-start bg-white shadow-md py-2 px-3 rounded-md ${containerClassName}`}>
 			<div className="px-2 text-gray-800">
-				<FiSearch size={20} />
+				<FiSearch size={16} />
 			</div>
 
 			<input
 				ref={searchRef}
-				className="flex-1 border-0 focus:ring-0"
+				className="flex-1 border-0 focus:ring-0 text-sm"
 				type="search"
 				value={search}
 				onChange={handleChange}

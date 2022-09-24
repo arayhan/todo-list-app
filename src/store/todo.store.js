@@ -80,7 +80,9 @@ export const useTodoStore = create(
 						);
 					}
 
-					switch (selectedFilter.value) {
+					console.log({ selectedFilter });
+
+					switch (selectedFilter) {
 						case FILTERS.DONE.value:
 							set({ todos: actualTodos.filter((todo) => todo.complete) });
 							break;

@@ -8,18 +8,22 @@ const SOCMEDS = [
 
 export const AppHeader = ({ containerClassName }) => {
 	return (
-		<div className={`text-center ${containerClassName}`}>
-			<div className="text-4xl font-semibold text-gray-800 mb-1">Todo List App</div>
-			<div className="text-lg mb-3">
-				by{' '}
-				<span
-					className="bg-gradient-to-br bg-clip-text from-blue-700 to-green-800"
-					style={{ WebkitTextFillColor: 'transparent' }}
-				>
-					Ahmed Rayhan Primadedas
-				</span>
+		<div
+			className={`flex flex-col items-center justify-between text-center sm:flex-row sm:text-left ${containerClassName}`}
+		>
+			<div className="flex flex-col justify-center mb-3 sm:mb-0">
+				<div className="text-4xl font-semibold text-gray-800 mb-1">Todo List App</div>
+				<div className="text-lg">
+					by{' '}
+					<span
+						className="bg-gradient-to-br bg-clip-text from-blue-700 to-green-800"
+						style={{ WebkitTextFillColor: 'transparent' }}
+					>
+						Ahmed Rayhan Primadedas
+					</span>
+				</div>
 			</div>
-			<div className="flex items-center justify-center space-x-3">
+			<div className="flex sm:flex-col items-center justify-center sm:items-end space-x-3 sm:space-x-0 sm:space-y-1">
 				{SOCMEDS.map((socmed) => (
 					<a
 						key={socmed.name}

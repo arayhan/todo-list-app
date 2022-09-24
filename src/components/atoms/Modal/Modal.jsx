@@ -4,7 +4,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 
 export const Modal = ({ title, description, isSubmitting, submitButtonText, onClose, onSubmit, children }) => {
 	return (
-		<div className="fixed z-10 left-0 top-0 w-screen h-screen flex items-center">
+		<div className="fixed z-10 left-0 top-0 w-full h-screen flex items-center p-5">
 			<div className="absolute left-0 top-0 w-full h-full bg-black bg-opacity-50" onClick={!isSubmitting && onClose} />
 			<div className="relative w-full max-w-screen-sm mx-auto bg-white shadow-md rounded-md">
 				<div className="p-5 space-y-2">

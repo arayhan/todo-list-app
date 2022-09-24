@@ -5,7 +5,7 @@ export const TodoList = () => {
 	const { todos } = useTodoStore((state) => state);
 
 	return (
-		<div className="max-h-96 overflow-y-scroll p-3 bg-gray-50 rounded-md">
+		<div className="overflow-y-scroll p-3 bg-gray-50 rounded-md" style={{ maxHeight: 480 }}>
 			{todos.length === 0 && (
 				<div className="text-center py-8 space-y-3">
 					<img

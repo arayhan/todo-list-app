@@ -28,7 +28,7 @@ export const Button = ({
 	return (
 		<button
 			type={type}
-			className={`flex items-center transition-all overflow-hidden ${variantClassName} ${className}`}
+			className={`flex items-center transition-all overflow-hidden text-sm ${variantClassName} ${className}`}
 			onClick={!disabled && onClick}
 			{...props}
 		>

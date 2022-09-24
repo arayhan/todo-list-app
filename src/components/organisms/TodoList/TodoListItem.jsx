@@ -27,7 +27,11 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 	const menuRef = useOnclickOutside(() => setShowMenu(false));
 
 	return (
-		<div className={`px-4 py-1 border border-gray-300 rounded-md flex items-center justify-between ${className}`}>
+		<div
+			className={`px-4 py-1 border border-gray-300 rounded-md flex items-center justify-between ${className} ${
+				isCompleted ? 'bg-gray-200' : 'bg-white'
+			}`}
+		>
 			<div className={`text-sm ${textCompletedClassName}`}>{title}</div>
 			<div className="flex items-center space-x-4">
 				<input

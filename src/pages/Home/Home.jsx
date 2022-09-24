@@ -25,14 +25,14 @@ const Home = () => {
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<div className="container max-w-screen-md">
-				<AppHeader containerClassName="py-10" />
+				<AppHeader containerClassName="pt-12 pb-8" />
 
 				<TodoSearch containerClassName="mb-7" />
 
 				{isLoading && <Loader className="bg-white py-8 rounded-md" />}
 
 				{!isLoading && (
-					<div className="bg-white p-5 rounded-md shadow-md space-y-8">
+					<div className="bg-white p-5 rounded-md shadow-md space-y-4">
 						<TodoPanelHeader />
 						<TodoList />
 						<TodoPanelFooter />
