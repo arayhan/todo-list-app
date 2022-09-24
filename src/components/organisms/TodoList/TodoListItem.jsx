@@ -30,7 +30,7 @@ export const TodoListItem = ({ className, title, isCompleted }) => {
 			<div className="flex items-center space-x-4">
 				<input
 					className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer"
-					checked={isCompleted}
+					defaultChecked={isCompleted}
 					type="checkbox"
 				/>
 				<div className="relative">
