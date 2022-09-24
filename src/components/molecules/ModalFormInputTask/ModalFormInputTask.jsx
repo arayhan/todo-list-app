@@ -36,24 +36,25 @@ export const ModalFormInputTask = ({ onClose }) => {
 						rules={{ required: { value: true, message: 'Harus diisi' } }}
 						render={({ field: { value, onChange }, fieldState: { error } }) => (
 							<div className="flex flex-col space-y-1">
-								<label
-									className={`flex items-center border rounded-md px-4 py-3 w-full space-x-4 ${
+								<fieldset
+									disabled={isSubmitting}
+									className={`disabled:bg-gray-100 flex items-center border rounded-md px-4 py-3 w-full space-x-4 ${
 										error ? 'border-2 border-red-500' : ''
 									}`}
 									htmlFor="formInputTask"
 								>
-									<div className="text-blue-500">
+									<label className={error ? 'text-red-500' : 'text-gray-700'}>
 										<FiBook size={18} />
-									</div>
+									</label>
 									<input
-										className="outline-0 ring-0 focus:ring-0 w-full disabled:text-gray-400"
+										className="placeholder:text-gray-400 outline-0 ring-0 focus:ring-0 w-full group disabled:bg-transparent disabled:text-gray-400"
 										placeholder="Ex : Go to market"
 										id="formInputTask"
 										disabled={isSubmitting}
 										value={value}
 										onChange={onChange}
 									/>
-								</label>
+								</fieldset>
 								{error && <div className="text-red-500 text-sm">{error.message}</div>}
 							</div>
 						)}
