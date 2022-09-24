@@ -4,25 +4,27 @@ import useOnclickOutside from 'react-cool-onclickoutside';
 import { Button } from '@/components/atoms';
 import classNames from 'classnames';
 import { useTodoStore } from '@/store';
+import { ModalFormInputTask } from '@/components/molecules';
 
 export const TodoListItem = ({ id, title, isCompleted, className }) => {
 	const { updateTodo, deleteTodo } = useTodoStore();
-	const [isShowMenu, setIsShowMenu] = useState(false);
+	const [isShowModal, setShowModal] = useState(false);
+	const [isShowMenu, setShowMenu] = useState(false);
 
 	const textCompletedClassName = classNames({
 		'text-gray-400 line-through italic': isCompleted,
 	});
 
 	const handleCheck = useCallback(() => {
-		updateTodo(id, { task: title, complete: !isCompleted });
-	}, [id, title, isCompleted, updateTodo]);
+		updateTodo(id, { complete: !isCompleted });
+	}, [id, isCompleted, updateTodo]);
 
 	const handleDelete = useCallback(() => {
 		deleteTodo(id);
-		setIsShowMenu(false);
+		setShowMenu(false);
 	}, [id, deleteTodo]);
 
-	const menuRef = useOnclickOutside(() => setIsShowMenu(false));
+	const menuRef = useOnclickOutside(() => setShowMenu(false));
 
 	return (
 		<div className={`px-4 py-1 border border-gray-300 rounded-md flex items-center justify-between ${className}`}>
@@ -39,7 +41,7 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 					<Button
 						className="text-gray-500 py-2"
 						label={<FiMoreVertical size={18} />}
-						onClick={() => setIsShowMenu(true)}
+						onClick={() => setShowMenu(true)}
 					/>
 
 					{isShowMenu && (
@@ -51,7 +53,7 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 								className="space-x-3 hover:bg-gray-50 w-full py-2 px-4 text-sm text-gray-500"
 								leftIcon={<FiEdit className="text-green-500" size={14} />}
 								label="Edit"
-								onClick={() => {}}
+								onClick={() => setShowModal(true)}
 							/>
 							<Button
 								className="space-x-3 hover:bg-gray-50 w-full py-2 px-4 text-sm text-gray-500"
@@ -63,6 +65,8 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 					)}
 				</div>
 			</div>
+
+			{isShowModal && <ModalFormInputTask id={id} task={title} onClose={() => setShowModal(false)} />}
 		</div>
 	);
 };

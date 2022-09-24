@@ -41,9 +41,10 @@ export const useTodoStore = create(
 					if (callback) callback(response);
 				},
 				updateTodo: async (id, data, callback) => {
+					set({ isSubmitting: true });
 					const response = await updateTodo(id, data);
-					console.log({ response });
 					get().getTodos();
+					set({ isSubmitting: false });
 					if (callback) callback(response);
 				},
 				deleteTodo: async (id, callback) => {

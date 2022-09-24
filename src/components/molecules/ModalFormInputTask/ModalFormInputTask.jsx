@@ -4,14 +4,23 @@ import { FiBook } from 'react-icons/fi';
 import { Modal } from '@/components/atoms';
 import { useTodoStore } from '@/store';
 
-export const ModalFormInputTask = ({ onClose }) => {
-	const { postTodo, isSubmitting } = useTodoStore();
-	const { control, handleSubmit } = useForm();
+export const ModalFormInputTask = ({ id, task, onClose }) => {
+	const { isSubmitting, postTodo, updateTodo } = useTodoStore();
+	const { control, handleSubmit } = useForm({ defaultValues: { task } });
 
-	const handleAddNewTask = (values) => {
-		postTodo(values.task, (response) => {
-			if (response.success) onClose();
-		});
+	const handleSubmitTask = (values) => {
+		if (id) {
+			if (values.task === task) onClose();
+			else {
+				updateTodo(id, { task: values.task }, (response) => {
+					if (response.success) onClose();
+				});
+			}
+		} else {
+			postTodo(values.task, (response) => {
+				if (response.success) onClose();
+			});
+		}
 	};
 
 	const handleClose = () => {
@@ -20,11 +29,11 @@ export const ModalFormInputTask = ({ onClose }) => {
 
 	return (
 		<Modal
-			title="Add New Task"
-			description="What task do you want to add?"
-			submitButtonText="Add New Task"
+			title={`${id ? 'Update' : 'Add New'} Task`}
+			description={`What task do you want to ${id ? 'update' : 'add'}?`}
+			submitButtonText={`${id ? 'Update' : 'Add New'} Task`}
 			onClose={handleClose}
-			onSubmit={handleSubmit(handleAddNewTask)}
+			onSubmit={handleSubmit(handleSubmitTask)}
 			isSubmitting={isSubmitting}
 		>
 			<Controller

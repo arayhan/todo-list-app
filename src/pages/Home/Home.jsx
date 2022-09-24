@@ -16,8 +16,8 @@ const Home = () => {
 	}, [alert, getTodos]);
 
 	useEffect(() => {
-		if (isFetched) syncTodos();
-		else getTodos();
+		// if (isFetched) syncTodos();
+		getTodos();
 	}, [isFetched, getTodos, syncTodos]);
 
 	useEffect(() => () => clearInterval(syncTodos));
