@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import { Button, InputRadio } from '@/components/atoms';
 import { ModalFormInputTask } from '@/components/molecules';
-
-const FILTERS = {
-	TASK: { value: 'task', label: 'Task' },
-	DONE: { value: 'done', label: 'Done' },
-	ALL: { value: 'all', label: 'All' },
-};
-const FILTERS_ARRAY = Object.values(FILTERS);
+import { FILTERS, FILTERS_ARRAY } from '@/utils/constants';
+import { useTodoStore } from '@/store';
 
 export const TodoPanelHeader = () => {
-	const [selectedFilter, setSelectedFilter] = useState(FILTERS.ALL);
+	const { selectedFilter, filterTodo } = useTodoStore();
 	const [isShowModal, setIsShowModal] = useState(false);
 
 	return (
@@ -24,7 +19,7 @@ export const TodoPanelHeader = () => {
 						checked={selectedFilter.value === filter.value}
 						value={filter.value}
 						label={filter.label}
-						onChange={() => setSelectedFilter(filter)}
+						onChange={() => filterTodo(filter)}
 					/>
 				))}
 			</div>

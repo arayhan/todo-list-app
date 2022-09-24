@@ -1,33 +1,45 @@
 import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
 import { getTodos } from '@/services';
+import { FILTERS } from '@/utils/constants';
 
 export const useTodoStore = create(
 	devtools(
 		persist(
 			(set, get) => ({
+				actualTodos: [],
 				todos: [],
-				filteredTodos: [],
 				search: '',
+				selectedFilter: FILTERS.ALL,
 				isLoading: false,
-				setSearch: (search) => {
-					set({ search });
-					get().handleSearch();
-				},
+				isFiltered: false,
 				getTodos: async () => {
 					set({ isLoading: true });
 					const todos = await getTodos();
-					set({ todos: todos.payload, isLoading: false });
+					set({ actualTodos: todos.payload, todos: todos.payload, isLoading: false });
 				},
 				deleteTodo: async (id) => {
-					const todos = get().todos.filter((todo) => todo.id !== id);
+					const todos = get().actualTodos.filter((todo) => todo.id !== id);
 					set({ todos });
 				},
-				handleSearch: () => {
-					const search = get().search;
-					const todos = get().todos;
-					const filteredTodos = todos.filter((todo) => todo.task.toLowerCase().search(search.toLowerCase()) !== -1);
-					set({ filteredTodos });
+				searchTodo: (search) => {
+					const todos = get().actualTodos.filter((todo) => todo.task.toLowerCase().search(search.toLowerCase()) !== -1);
+					set({ search, todos, isFiltered: true });
+				},
+				filterTodo: (selectedFilter) => {
+					switch (selectedFilter.value) {
+						case FILTERS.DONE.value:
+							set({ todos: get().actualTodos.filter((todo) => todo.complete) });
+							break;
+						case FILTERS.TASK.value:
+							set({ todos: get().actualTodos.filter((todo) => !todo.complete) });
+							break;
+						default:
+							set({ todos: get().actualTodos.filter((todo) => todo) });
+							break;
+					}
+
+					set({ selectedFilter });
 				},
 			}),
 			{

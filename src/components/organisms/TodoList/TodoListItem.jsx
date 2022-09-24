@@ -3,6 +3,7 @@ import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { Button } from '@/components/atoms';
 import classNames from 'classnames';
+import { useTodoStore } from '@/store';
 
 export const TodoListItem = ({ className, title, isCompleted }) => {
 	const [isShowMenu, setIsShowMenu] = useState(false);
