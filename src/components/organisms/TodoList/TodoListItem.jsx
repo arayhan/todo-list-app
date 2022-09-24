@@ -16,8 +16,8 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 	});
 
 	const handleCheck = useCallback(() => {
-		updateTodo(id, { complete: !isCompleted });
-	}, [id, isCompleted, updateTodo]);
+		updateTodo(id, { task: title, complete: !isCompleted });
+	}, [id, title, isCompleted, updateTodo]);
 
 	const handleDelete = useCallback(() => {
 		deleteTodo(id);
