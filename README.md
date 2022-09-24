@@ -13,3 +13,10 @@
 
 - [x] Absolute Import
 - [x] Prettier
+
+## About Authors
+
+[![LinkedIn](https://github.com/shikhar1020jais1/Git-Social/blob/master/Icons/LinkedIn.png?raw=true(LinkedIn))][1] [![Instagram](https://github.com/shikhar1020jais1/Git-Social/blob/master/Icons/Instagram.png?raw=true(Instagram))][2]
+
+[1]: https://www.linkedin.com/in/arayhan/
+[2]: https://www.instagram.com/arayhan_/
