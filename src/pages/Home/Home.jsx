@@ -20,10 +20,12 @@ const Home = () => {
 		else getTodos();
 	}, [isFetched, getTodos, syncTodos]);
 
+	useEffect(() => () => clearInterval(syncTodos));
+
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<div className="container max-w-screen-md">
-				<AppHeader containerClassName="py-14" />
+				<AppHeader containerClassName="py-10" />
 
 				<TodoSearch containerClassName="mb-7" />
 
