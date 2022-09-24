@@ -6,7 +6,7 @@ import { FILTERS, FILTERS_ARRAY } from '@/utils/constants';
 import { useTodoStore } from '@/store';
 
 export const TodoPanelHeader = () => {
-	const { selectedFilter, filterTodo } = useTodoStore();
+	const { selectedFilter, setSelectedFilter } = useTodoStore();
 	const [isShowModal, setIsShowModal] = useState(false);
 
 	return (
@@ -19,7 +19,7 @@ export const TodoPanelHeader = () => {
 						checked={selectedFilter.value === filter.value}
 						value={filter.value}
 						label={filter.label}
-						onChange={() => filterTodo(filter)}
+						onChange={() => setSelectedFilter(filter)}
 					/>
 				))}
 			</div>

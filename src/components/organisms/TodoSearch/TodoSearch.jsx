@@ -6,9 +6,9 @@ import { useTodoStore } from '@/store';
 export const TodoSearch = ({ containerClassName }) => {
 	const searchRef = useRef(null);
 
-	const { search, searchTodo } = useTodoStore();
+	const { search, setSearch } = useTodoStore();
 
-	const handleChange = (event) => searchTodo(event.target.value);
+	const handleChange = (event) => setSearch(event.target.value);
 
 	useKeypress(['Control', 'k'], (event) => {
 		if (event.ctrlKey && event.key === 'k') searchRef.current.focus();
