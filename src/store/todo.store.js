@@ -1,6 +1,6 @@
 import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
-import { getTodos } from '@/services';
+import { postTodo, getTodos } from '@/services';
 import { FILTERS } from '@/utils/constants';
 
 export const useTodoStore = create(
@@ -12,6 +12,7 @@ export const useTodoStore = create(
 				search: '',
 				selectedFilter: FILTERS.ALL,
 				isLoading: false,
+				isSubmitting: false,
 
 				setSearch: (search) => {
 					set({ search });
@@ -27,6 +28,13 @@ export const useTodoStore = create(
 					const todos = await getTodos();
 					set({ actualTodos: todos.payload, todos: todos.payload, isLoading: false });
 					get().filterTodo();
+				},
+				postTodo: async (task, callback) => {
+					set({ isSubmitting: true });
+					const response = await postTodo(task);
+					get().getTodos();
+					set({ isSubmitting: false });
+					callback(response);
 				},
 				deleteTodo: async (id) => {
 					const todos = get().todos.filter((todo) => todo.id !== id);

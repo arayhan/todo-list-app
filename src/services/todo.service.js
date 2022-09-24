@@ -9,6 +9,15 @@ export const getTodos = async () => {
 	}
 };
 
+export const postTodo = async (task) => {
+	try {
+		const response = await http.post('/', { task, complete: false });
+		return { success: true, payload: response.data };
+	} catch (e) {
+		return { success: false, payload: e };
+	}
+};
+
 export const deleteTodo = async (id) => {
 	try {
 		const response = await http.delete(`/${id}`);
