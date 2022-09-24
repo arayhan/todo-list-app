@@ -16,7 +16,7 @@ const Home = () => {
 	}, [alert, getTodos]);
 
 	useEffect(() => {
-		// if (isFetched) syncTodos();
+		if (isFetched) syncTodos();
 		getTodos();
 	}, [isFetched, getTodos, syncTodos]);
 
