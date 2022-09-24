@@ -1,7 +1,7 @@
 import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
 import { postTodo, getTodos, updateTodo, deleteTodo } from '@/services';
-import { FILTERS } from '@/utils/constants';
+import { FILTERS, FORM_METHODS } from '@/utils/constants';
 
 export const useTodoStore = create(
 	devtools(
@@ -51,6 +51,23 @@ export const useTodoStore = create(
 					const response = await deleteTodo(id);
 					get().getTodos();
 					if (callback) callback(response);
+				},
+				deleteBulkTodo: async (method, callback) => {
+					get().getTodos();
+					set({ isLoading: true });
+
+					let todos = get().actualTodos;
+
+					if (method === FORM_METHODS.DELETE_ALL_DONE) todos = todos.filter((todo) => todo.complete);
+
+					const response = await Promise.all(todos.map((todo) => deleteTodo(todo.id)));
+					const payloads = response.map((res) => res.payload);
+					const isAllSuccess = response.every((res) => res.success);
+
+					set({ isLoading: false });
+					get().getTodos();
+
+					if (callback) callback({ success: isAllSuccess, payload: payloads });
 				},
 
 				filterTodo: () => {

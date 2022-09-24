@@ -2,6 +2,8 @@ export const FORM_METHODS = {
 	CREATE: 'Create',
 	UPDATE: 'Update',
 	DELETE: 'Delete',
+	DELETE_ALL: 'Delete All',
+	DELETE_ALL_DONE: 'Delete All Done',
 };
 
 export const FILTERS = {
