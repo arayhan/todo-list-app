@@ -1,6 +1,6 @@
 import create from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
-import { postTodo, getTodos } from '@/services';
+import { postTodo, getTodos, updateTodo } from '@/services';
 import { FILTERS } from '@/utils/constants';
 
 export const useTodoStore = create(
@@ -38,21 +38,13 @@ export const useTodoStore = create(
 					const response = await postTodo(task);
 					get().getTodos();
 					set({ isSubmitting: false });
-					callback(response);
+					if (callback) callback(response);
 				},
-				checkTodo: async (id, callback) => {
-					console.log('checkTodo', id);
-					set({
-						todos: get().todos.map((todo) => {
-							if (todo.id === id) {
-								return { ...todo, completed: !todo.completed };
-							}
-							return todo;
-						}),
-					});
-				},
-				updateTodo: async (id, callback) => {
-					console.log('updateTodo', id);
+				updateTodo: async (id, data, callback) => {
+					const response = await updateTodo(id, data);
+					console.log({ response });
+					get().getTodos();
+					if (callback) callback(response);
 				},
 				deleteTodo: async (id, callback) => {
 					console.log('deleteTodo', id);

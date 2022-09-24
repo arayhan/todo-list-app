@@ -18,6 +18,15 @@ export const postTodo = async (task) => {
 	}
 };
 
+export const updateTodo = async (id, data) => {
+	try {
+		const response = await http.put(`/${id}`, data);
+		return { success: true, payload: response.data };
+	} catch (e) {
+		return { success: false, payload: e };
+	}
+};
+
 export const deleteTodo = async (id) => {
 	try {
 		const response = await http.delete(`/${id}`);

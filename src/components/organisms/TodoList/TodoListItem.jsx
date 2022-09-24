@@ -6,17 +6,16 @@ import classNames from 'classnames';
 import { useTodoStore } from '@/store';
 
 export const TodoListItem = ({ id, title, isCompleted, className }) => {
-	const { checkTodo, updateTodo, deleteTodo } = useTodoStore();
+	const { updateTodo, deleteTodo } = useTodoStore();
 	const [isShowMenu, setIsShowMenu] = useState(false);
 
 	const textCompletedClassName = classNames({
 		'text-gray-400 line-through italic': isCompleted,
 	});
 
-	const handleUpdate = useCallback(() => {
-		updateTodo(id);
-		setIsShowMenu(false);
-	}, [id, updateTodo]);
+	const handleCheck = useCallback(() => {
+		updateTodo(id, { task: title, complete: !isCompleted });
+	}, [id, title, isCompleted, updateTodo]);
 
 	const handleDelete = useCallback(() => {
 		deleteTodo(id);
@@ -32,8 +31,9 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 				<input
 					className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer"
 					type="checkbox"
-					defaultChecked={isCompleted}
-					onChange={() => checkTodo(id)}
+					value={id}
+					checked={isCompleted}
+					onChange={() => handleCheck(id)}
 				/>
 				<div className="relative">
 					<Button
@@ -51,7 +51,7 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 								className="space-x-3 hover:bg-gray-50 w-full py-2 px-4 text-sm text-gray-500"
 								leftIcon={<FiEdit className="text-green-500" size={14} />}
 								label="Edit"
-								onClick={handleUpdate}
+								onClick={() => {}}
 							/>
 							<Button
 								className="space-x-3 hover:bg-gray-50 w-full py-2 px-4 text-sm text-gray-500"
