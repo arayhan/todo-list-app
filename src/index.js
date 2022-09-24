@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider as AlertProvider } from 'react-alert';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import { alertConfigs, AlertTemplate } from './components/third-parties';
 import App from './App';
 
 import './styles/index.css';
@@ -9,11 +11,11 @@ import './styles/index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
+	<BrowserRouter>
+		<AlertProvider template={AlertTemplate} {...alertConfigs}>
 			<App />
-		</BrowserRouter>
-	</React.StrictMode>
+		</AlertProvider>
+	</BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

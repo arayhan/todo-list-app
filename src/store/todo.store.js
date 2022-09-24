@@ -13,6 +13,7 @@ export const useTodoStore = create(
 				selectedFilter: FILTERS.ALL,
 				isLoading: false,
 				isSubmitting: false,
+				isFetched: false,
 
 				setSearch: (search) => {
 					set({ search });
@@ -24,9 +25,12 @@ export const useTodoStore = create(
 				},
 
 				getTodos: async () => {
-					set({ isLoading: true });
+					if (!get().isFetched) {
+						set({ isLoading: true });
+					}
+
 					const todos = await getTodos();
-					set({ actualTodos: todos.payload, todos: todos.payload, isLoading: false });
+					set({ actualTodos: todos.payload, todos: todos.payload, isLoading: false, isFetched: true });
 					get().filterTodo();
 				},
 				postTodo: async (task, callback) => {
@@ -36,9 +40,22 @@ export const useTodoStore = create(
 					set({ isSubmitting: false });
 					callback(response);
 				},
-				deleteTodo: async (id) => {
-					const todos = get().todos.filter((todo) => todo.id !== id);
-					set({ todos });
+				checkTodo: async (id, callback) => {
+					console.log('checkTodo', id);
+					set({
+						todos: get().todos.map((todo) => {
+							if (todo.id === id) {
+								return { ...todo, completed: !todo.completed };
+							}
+							return todo;
+						}),
+					});
+				},
+				updateTodo: async (id, callback) => {
+					console.log('updateTodo', id);
+				},
+				deleteTodo: async (id, callback) => {
+					console.log('deleteTodo', id);
 				},
 
 				filterTodo: () => {

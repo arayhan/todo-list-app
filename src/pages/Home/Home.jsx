@@ -1,14 +1,24 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useAlert } from 'react-alert';
 import { Loader } from '@/components/atoms';
 import { AppFooter, AppHeader, TodoList, TodoPanelFooter, TodoPanelHeader, TodoSearch } from '@/components/organisms';
 import { useTodoStore } from '@/store';
 
 const Home = () => {
-	const { isLoading, getTodos } = useTodoStore((state) => state);
+	const alert = useAlert();
+	const { isFetched, isLoading, getTodos } = useTodoStore((state) => state);
+
+	const syncTodos = useCallback(() => {
+		setInterval(() => {
+			alert.show('Synching...', { type: 'syncing' });
+			getTodos();
+		}, 10000);
+	}, [alert, getTodos]);
 
 	useEffect(() => {
-		getTodos();
-	}, [getTodos]);
+		if (isFetched) syncTodos();
+		else getTodos();
+	}, [isFetched, getTodos, syncTodos]);
 
 	return (
 		<div className="min-h-screen bg-gray-100">

@@ -5,7 +5,8 @@ import { Button } from '@/components/atoms';
 import classNames from 'classnames';
 import { useTodoStore } from '@/store';
 
-export const TodoListItem = ({ className, title, isCompleted }) => {
+export const TodoListItem = ({ id, title, isCompleted, className }) => {
+	const { checkTodo, updateTodo, deleteTodo } = useTodoStore();
 	const [isShowMenu, setIsShowMenu] = useState(false);
 
 	const textCompletedClassName = classNames({
@@ -13,12 +14,12 @@ export const TodoListItem = ({ className, title, isCompleted }) => {
 	});
 
 	const handleUpdate = () => {
-		console.log('update');
+		updateTodo(id);
 		setIsShowMenu(false);
 	};
 
 	const handleDelete = () => {
-		console.log('delete');
+		deleteTodo(id);
 		setIsShowMenu(false);
 	};
 
@@ -30,8 +31,9 @@ export const TodoListItem = ({ className, title, isCompleted }) => {
 			<div className="flex items-center space-x-4">
 				<input
 					className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer"
-					defaultChecked={isCompleted}
 					type="checkbox"
+					defaultChecked={isCompleted}
+					onChange={() => checkTodo(id)}
 				/>
 				<div className="relative">
 					<Button
