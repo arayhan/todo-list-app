@@ -1,25 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { TodoListItem } from './TodoListItem';
-import { todoAtom } from '@/store/store';
-import { getTodos } from '@/services';
+import { useTodoStore } from '@/store';
+import { BiLoaderAlt } from 'react-icons/bi';
 
 export const TodoList = () => {
-	const [todos, setTodos] = useState([]);
-	const [isLoading, setLoading] = useState(true);
+	const { todos, isLoading, getTodos } = useTodoStore((state) => state);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true);
-			await getTodos();
-			setLoading(true);
-		};
+		getTodos();
+	}, [getTodos]);
 
-		fetchData();
-	}, []);
+	console.log(todos);
 
 	return (
 		<div className="space-y-3">
-			{/* {todos.length === 0 && (
+			{isLoading && (
+				<div className="flex items-center justify-center space-x-3 py-8 bg-gray-50 rounded-md">
+					<BiLoaderAlt className="animate-spin" />
+					<span>Loading...</span>
+				</div>
+			)}
+
+			{!isLoading && todos.length === 0 && (
 				<div className="text-center py-8 space-y-3">
 					<img
 						className="w-52 mx-auto"
@@ -30,7 +32,9 @@ export const TodoList = () => {
 				</div>
 			)}
 
-			{todos.length > 0 && todos.map((todo) => <TodoListItem key={todo.id} />)} */}
+			{!isLoading &&
+				todos.length > 0 &&
+				todos.map((todo) => <TodoListItem key={todo.id} id={todo.id} title={todo.task} isCompleted={todo.complete} />)}
 		</div>
 	);
 };

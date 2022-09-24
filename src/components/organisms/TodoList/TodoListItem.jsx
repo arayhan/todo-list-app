@@ -2,9 +2,14 @@ import { useState } from 'react';
 import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { Button } from '@/components/atoms';
+import classNames from 'classnames';
 
-export const TodoListItem = () => {
+export const TodoListItem = ({ title, isCompleted }) => {
 	const [isShowMenu, setIsShowMenu] = useState(false);
+
+	const textCompletedClassName = classNames({
+		'text-gray-400 line-through italic': isCompleted,
+	});
 
 	const handleUpdate = () => {
 		console.log('update');
@@ -20,9 +25,13 @@ export const TodoListItem = () => {
 
 	return (
 		<div className="px-4 py-2 border border-gray-300 rounded-md flex items-center justify-between">
-			<div>Nyapu Rumah</div>
+			<div className={textCompletedClassName}>{title}</div>
 			<div className="flex items-center space-x-4">
-				<input className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer" type="checkbox" />
+				<input
+					className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer"
+					checked={isCompleted}
+					type="checkbox"
+				/>
 				<div className="relative">
 					<Button
 						className="text-gray-500 py-2"
