@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { FiEdit, FiMoreVertical, FiTrash } from 'react-icons/fi';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { Button } from '@/components/atoms';
@@ -13,15 +13,15 @@ export const TodoListItem = ({ id, title, isCompleted, className }) => {
 		'text-gray-400 line-through italic': isCompleted,
 	});
 
-	const handleUpdate = () => {
+	const handleUpdate = useCallback(() => {
 		updateTodo(id);
 		setIsShowMenu(false);
-	};
+	}, [id, updateTodo]);
 
-	const handleDelete = () => {
+	const handleDelete = useCallback(() => {
 		deleteTodo(id);
 		setIsShowMenu(false);
-	};
+	}, [id, deleteTodo]);
 
 	const menuRef = useOnclickOutside(() => setIsShowMenu(false));
 
