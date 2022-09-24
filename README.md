@@ -1,3 +1,6 @@
+# Overview
+![alt text](https://github.com/arayhan/todo-list-app/blob/main/docs/overview.png?raw=true)
+
 # Features & Stacks
 
 - Tailwind CSS
