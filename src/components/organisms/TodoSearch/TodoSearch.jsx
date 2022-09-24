@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import useKeypress from 'react-use-keypress';
 import { FiSearch } from 'react-icons/fi';
+import { useTodoStore } from '@/store';
 
 export const TodoSearch = ({ containerClassName }) => {
 	const searchRef = useRef(null);
 
-	const [search, setSearch] = useState('');
+	const { search, setSearch } = useTodoStore();
 
 	const handleChange = (event) => setSearch(event.target.value);
 

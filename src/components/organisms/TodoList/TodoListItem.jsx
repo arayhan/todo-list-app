@@ -4,7 +4,7 @@ import useOnclickOutside from 'react-cool-onclickoutside';
 import { Button } from '@/components/atoms';
 import classNames from 'classnames';
 
-export const TodoListItem = ({ title, isCompleted }) => {
+export const TodoListItem = ({ className, title, isCompleted }) => {
 	const [isShowMenu, setIsShowMenu] = useState(false);
 
 	const textCompletedClassName = classNames({
@@ -24,8 +24,8 @@ export const TodoListItem = ({ title, isCompleted }) => {
 	const menuRef = useOnclickOutside(() => setIsShowMenu(false));
 
 	return (
-		<div className="px-4 py-2 border border-gray-300 rounded-md flex items-center justify-between">
-			<div className={textCompletedClassName}>{title}</div>
+		<div className={`px-4 py-1 border border-gray-300 rounded-md flex items-center justify-between ${className}`}>
+			<div className={`text-sm ${textCompletedClassName}`}>{title}</div>
 			<div className="flex items-center space-x-4">
 				<input
 					className="rounded-md focus:ring-0 focus:outline-none p-2 cursor-pointer"
@@ -62,4 +62,8 @@ export const TodoListItem = ({ title, isCompleted }) => {
 			</div>
 		</div>
 	);
+};
+
+TodoListItem.defaultProps = {
+	classNames: '',
 };

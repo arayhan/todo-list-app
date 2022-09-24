@@ -8,3 +8,12 @@ export const getTodos = async () => {
 		return { success: false, payload: e };
 	}
 };
+
+export const deleteTodo = async (id) => {
+	try {
+		const response = await http.delete(`/${id}`);
+		return { success: true, payload: response.data };
+	} catch (e) {
+		return { success: false, payload: e };
+	}
+};
